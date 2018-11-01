@@ -1,0 +1,62 @@
+<html>
+
+<head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+	<script src="https://code.jquery.com/jquery.min.js"></script>
+
+</head>
+<body>
+	<table class="table">
+		<tr>
+			<td>
+				<canvas class="chart" width="350" height="150"
+					data-values="[12, 19, 3, 5, 2, 3]"></canvas>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<canvas class="chart" width="350" height="150"
+					data-values="[5, 2, 3]"></canvas>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<canvas class="chart" width="350" height="150"
+					data-values="[19, 3, 5, 2]"></canvas>
+			</td>
+		</tr>
+	</table>
+	
+	<script>
+	$(function() {
+		$('.chart').each(function() {
+			var values = $(this).data("values");
+			var dataset = {
+				labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+				datasets: [{
+					label: '# of Votes',
+					data: values,
+
+				}]
+			};
+			
+			var options = {
+				type: 'bar',
+				data: dataset,
+				options: {
+					scales: {
+						yAxes: [{
+							ticks: {
+								beginAtZero:true
+							}
+						}]
+					}
+				}
+			};
+			
+			var ctx = $(this);
+			new Chart(ctx, options);
+		});
+	});
+	</script>
+</body>
