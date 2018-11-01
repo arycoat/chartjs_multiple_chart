@@ -1,1 +1,1 @@
-# chartjs_multiple_chart
+# multiple charts on same page
